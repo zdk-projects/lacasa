@@ -1,4 +1,5 @@
 Django~=4.0.1
+gunicorn
 python-dotenv
 django-heroku
 whitenoise
