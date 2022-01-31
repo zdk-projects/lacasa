@@ -2,7 +2,6 @@ import os
 from pathlib import Path
 import dj_database_url
 import django_heroku
-import dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
