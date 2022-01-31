@@ -1,5 +1,6 @@
 Django~=4.0.1
 gunicorn
-python-dotenv
+python-dotenv~=0.19.2
 django-heroku
 whitenoise
+raygun4py

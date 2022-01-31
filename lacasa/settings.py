@@ -1,12 +1,30 @@
 import os
 from pathlib import Path
+import os
+import dotenv
+import django
 import dj_database_url
 import django_heroku
 import dotenv
+from django.utils.encoding import force_str
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-&7%asvjr86k1i-8ejev#nc!-7yi_8qx7!m(+)8v)n$xh7u7#eh'
+
+dotenv_file = os.path.join(BASE_DIR, ".env")
+
+django.utils.encoding.force_text = force_str
+
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
+
+SECRET_KEY = os.environ['SECRET_KEY']
+
+ADMINS = (
+    ('admin', os.environ['SITE_ADMIN']),
+)
+
 
 DEBUG = True
 
@@ -34,6 +52,11 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+MIDDLEWARE_CLASSES = (
+    'raygun4py.middleware.django.Provider'
+)
+RAYGUN4PY_API_KEY =  os.environ['RAYGUN4PY_API_KEY']
 
 ROOT_URLCONF = 'lacasa.urls'
 
