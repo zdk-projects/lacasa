@@ -43,9 +43,10 @@
                             <li><a href="properties.html">Properties</a></li>
                             <li><a href="#">Services</a></li>
                             <li><a href="submit-property.html">Submit property </a></li>
-                            <li><a href="contact.html">Contact us</a></li>
-                            <li><a href="faq.html">fqa</a></li>
-                            <li><a href="faq.html">Terms </a></li>
+                            <li><a href="{% url 'contact_us' %}">Contact us</a></li>
+                            <li><a href="{% url 'privacy_policy' %}">Privacy Policy </a></li>
+
+                            <li><a href="{% url 'terms_and_conditions' %}">Terms and Conditions</a></li>
                         </ul>
                     </div>
                 </div>
@@ -107,8 +108,7 @@
                     <div class="single-footer news-letter">
                         <h4>Stay in touch</h4>
                         <div class="footer-title-line"></div>
-                        <p>Lorem ipsum dolor sit amet, nulla suscipit similique quisquam molestias. Vel unde,
-                            blanditiis.</p>
+                        <p>Subscribe to our Newsletter to receive exclusive offers, the latest news and updates.</p>
 
                         <form>
                             <div class="input-group">
@@ -123,22 +123,35 @@
 
                         <div class="social pull-right">
                             <ul>
-                                <li>
-                                    <a href="https://twitter.com/kimarotec">
-                                        <i
-                                                class="fa fa-twitter"></i></a>
-                                </li>
-                                <li>
-                                    <a href="https://www.facebook.com/kimarotec"><i class="fa fa-facebook"></i></a>
-                                </li>
-                                <li>
-                                    <a href="https://plus.google.com/kimarotec"><i class="fa fa-google-plus"></i>
-                                    </a>
-                                </li>
-                                <li><a href="https://instagram.com/kimarotec"
-                                ><i class="fa fa-instagram"></i></a></li>
-                                <li><a href="https://instagram.com/kimarotec"
-                                ><i class="fa fa-dribbble"></i></a></li>
+                                {% if content.about_us.show_twitter_link %}
+                                    <li><a href="{{ content.about_us.twitter_link }}"><i class="fa fa-twitter"></i></a>
+                                    </li>
+
+                                {% endif %}
+
+                                {% if content.about_us.show_twitter_link %}
+                                    <li><a href="{{ content.about_us.facebook_link }}"><i
+                                            class="fa fa-facebook"></i></a>
+                                    </li>
+
+                                {% endif %}
+                                {% if content.about_us.show_linked_link %}
+                                    <li><a href="{{ content.about_us.linked_link }}"><i class="fa fa-linkedin"></i></a>
+                                    </li>
+
+                                {% endif %}
+
+                                {% if content.about_us.show_youtube_link %}
+                                    <li><a href="{{ content.about_us.youtube_link }}"><i class="fa fa-youtube"></i></a>
+                                    </li>
+
+                                {% endif %}
+
+                                {% if content.about_us.show_instagram_link %}
+                                    <li><a href="{{ content.about_us.instagram_link }}"><i class="fa fa-instagram"></i></a>
+                                    </li>
+
+                                {% endif %}
                             </ul>
                         </div>
                     </div>
@@ -158,8 +171,8 @@
                     <ul>
                         <li><a href="{% url 'home_page' %}">Home</a></li>
                         <li><a href="#">Property</a></li>
-                        <li><a href="#">Faq</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="{% url 'privacy_policy' %}">Privacy Policy</a></li>
+                        <li><a href="{% url 'contact_us' %}">Contact</a></li>
                     </ul>
                 </div>
             </div>

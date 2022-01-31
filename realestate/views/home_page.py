@@ -30,3 +30,24 @@ def our_company(request):
         'about_us': about_us()
     }
     return render(request, 'pages/home/company.html', context={'content': content})
+
+
+def contact_us(request):
+    content = {
+        'about_us': about_us()
+    }
+    return render(request, 'pages/contact/contact_us.html', context={'content': content})
+
+
+def privacy_policy(request):
+    content = {
+        'about_us': about_us()
+    }
+    return render(request, 'pages/privacy-policy/index.html', context={'content': content})
+
+
+def terms_and_conditions(request):
+    content = {
+        'about_us': about_us()
+    }
+    return render(request, 'pages/privacy-policy/term-and-services.html', context={'content': content})

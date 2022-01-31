@@ -1,0 +1,26 @@
+{% load static %}
+{% load beautify %}
+<div class="row">
+    <div class="col-sm-4">
+        <h3><i class="fa fa-map-marker"></i> Address</h3>
+        <p>{{ content.about_us.office_address }}
+            <br>Rawalpindi
+            <br>47000
+            <br>
+            <strong>Pakistan</strong>
+        </p>
+    </div>
+    <!-- /.col-sm-4 -->
+    <div class="col-sm-4">
+        <h3><i class="fa fa-phone"></i> Call Us</h3>
+        <p class="text-muted">Please contact us.</p>
+        <p><strong>{{ content.about_us.phone_number | beautify_phone_number }}</strong></p>
+    </div>
+    <!-- /.col-sm-4 -->
+    <div class="col-sm-4">
+        <h3><i class="fa fa-envelope"></i> Email support</h3>
+        <p class="text-muted">Please feel free to write an email to us.</p>
+        <strong><a href="mailto:"> {{ content.about_us.email_address }}</a></strong>
+    </div>
+    <!-- /.col-sm-4 -->
+</div>

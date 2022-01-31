@@ -1,0 +1,103 @@
+{% extends 'theme/layout.html' %}
+
+{% block title %} | User Dashboard {% endblock %}
+
+{% block WebContent %}
+    <div class="page-head">
+        <div class="container">
+            <div class="row">
+                <div class="page-head-content">
+                    <h1 class="page-title">DASHBOARD</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content-area recent-property" style="background-color: #FFF;">
+        <div class="container">
+            <div class="row">
+
+                <!-- Breadcrumb -->
+                <section id="bc" class="mt-3">
+                    <div class="container">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="{% url 'home_page' %}">
+                                        <i class="fas fa-home"></i> Home</a>
+                                </li>
+                                <li class="breadcrumb-item active"> Dashboard</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </section>
+                <!-- Alerts -->
+                <div class="col-md-9 pr-30 padding-top-40 properties-page user-properties">
+                    <section id="dashboard" class="py-4">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h2>Welcome {{ user.first_name }}</h2>
+                                    {% if contacts %}
+                                        <p>Here are the property listings that you have inquired about</p>
+                                        <table class="table">
+                                            <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Property</th>
+                                                <th></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for contact in contacts %}
+                                                <tr>
+                                                    <td>{{ contact.id }}</td>
+                                                    <td>{{ contact.listing }}</td>
+                                                    <td>
+                                                        <a class="btn btn-light"
+                                                           href="{% url 'listing' contact.listing_id %}">View
+                                                            Listing</a>
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    {% else %}
+                                        <p>You have not made any inquiries</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="col-md-3 p0 padding-top-40">
+                    <div class="blog-asside-right">
+                        <div class="panel panel-default sidebar-menu wow fadeInRight animated animated"
+                             style="visibility: visible; animation-name: fadeInRight;">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Hello {{ user.username }}</h3>
+                            </div>
+                            <div class="panel-body search-widget">
+
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default sidebar-menu wow fadeInRight animated animated"
+                             style="visibility: visible; animation-name: fadeInRight;">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Recommended</h3>
+                            </div>
+                            <div class="panel-body recent-property-widget">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

@@ -1,5 +1,6 @@
 {% extends 'theme/layout.html' %}
 {% load static %}
+{% block title %} The Best Real Estate & Land Consultant {% endblock %}
 {% block StyleLink %}
     <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/slick-theme.css' %}">
@@ -26,5 +27,8 @@
 {% endblock %}
 {% block JavascriptLink %}
     <script src="{% static 'assets/js/slick.min.js' %}"></script>
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="{% static 'assets/js/load_slick.js' %}"></script>
+
 
 {% endblock %}
