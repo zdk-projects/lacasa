@@ -1,4 +1,5 @@
 {% load static %}
+{% load beautify %}
 <!-- boy-sale area -->
 <div class="boy-sale-area">
     <div class="container">
@@ -34,9 +35,15 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12">
-                <p class="asks-call">QUESTIONS? CALL US : <span class="strong"> + 3-123- 424-5700</span></p>
-            </div>
+
+            {% if content.about_us.show_phone_number %}
+                <div class="col-xs-12">
+                    <p class="asks-call">QUESTIONS? CALL US : <span
+                            class="strong">  {{ content.about_us.phone_number | beautify_phone_number }} </span></p>
+                </div>
+
+            {% endif %}
+
         </div>
     </div>
 </div>

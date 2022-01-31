@@ -84,9 +84,8 @@ p {
 }
 
 a {
-    color: #d27e04;
+    color: #A73893;
     outline: 0;
-    font-weight: bold;
     -webkit-transition: all .8s ease;
     transition: all .8s ease;
 }

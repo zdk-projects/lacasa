@@ -3,13 +3,7 @@ $(window).load(function () { // makes sure the whole site is loaded
     $('#preloader').delay(0).fadeOut('slow'); // will fade out the white DIV that covers the website.
     $('body').delay(0).css({'overflow': 'visible'});
 
-// Initializing WOW.JS
 
-    new WOW().init();
-    $("body").overlayScrollbars({ overflowBehavior : {
-        x : "none",
-        y : "scroll"
-    } });
 })
 
 $(document).ready(function () {
@@ -39,10 +33,6 @@ $(document).ready(function () {
         $('#list-type').removeClass('proerty-th');
 
     });
-
-
-});
-$(document).ready(function () {
     $("#bg-slider").owlCarousel({
         navigation: false, // Show next and prev buttons
         slideSpeed: 100,
@@ -130,7 +120,26 @@ $(document).ready(function () {
         return r;
     }
 
-})
+    new WOW().init();
+
+    $('.my-slick-list').slick({
+        dots: true,
+        speed: 500,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+         arrows: true,
+
+        infinite: true,
 
 
+    });
+    $("body").overlayScrollbars({
+        overflowBehavior: {
+            y: "scroll",
+            x: "none"
+        }
+    });
 
+});

@@ -1,8 +1,15 @@
 {% extends 'theme/layout.html' %}
 {% load static %}
+{% block StyleLink %}
+    <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slick-theme.css' %}">
+
+{% endblock %}
 {% block WebContent %}
 
 
+    <!-- End of nav bar -->
+    {% include 'pages/home/content/slider.html' %}
     {% include 'pages/home/content/feature_projects.html' %}
 
     {% include 'pages/home/content/welcome_area.html' %}
@@ -15,5 +22,9 @@
 
 
 
+
+{% endblock %}
+{% block JavascriptLink %}
+    <script src="{% static 'assets/js/slick.min.js' %}"></script>
 
 {% endblock %}

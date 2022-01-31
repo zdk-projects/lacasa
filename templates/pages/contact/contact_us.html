@@ -1,0 +1,21 @@
+{% extends 'theme/layout.html' %}
+
+{% block WebContent %}
+    <div class="page-head">
+        <div class="container">
+            <div class="row">
+                <div class="page-head-content">
+                    <h1 class="page-title">Contact page</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content-area recent-property padding-top-40">
+        <div class="container">
+            <div class="col-md-8 col-md-offset-2">
+                {% include 'pages/contact/content/form.html' %}
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

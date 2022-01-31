@@ -48,6 +48,8 @@
     <link rel="stylesheet" href="{% static 'assets/css/OverlayScrollbars.min.css' %}">
 
     <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    {% block StyleLink %}
+    {% endblock %}
     <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
 
 </head>
@@ -60,8 +62,7 @@
 {% include 'theme/content/navbar.html' %}
 
 
-<!-- End of nav bar -->
-{% include 'theme/content/slider.html' %}
+
 
 {% block WebContent %}
 
@@ -86,7 +87,10 @@
 <script src="{% static 'assets/js/price-range.js' %}"></script>
 <script src="{% static 'assets/js/OverlayScrollbars.min.js' %}"></script>
 
-<script src="{% static 'assets/js/main.js' %}"></script>
 
+{% block JavascriptLink %}
+
+{% endblock %}
+<script src="{% static 'assets/js/main.js' %}"></script>
 </body>
 </html>
