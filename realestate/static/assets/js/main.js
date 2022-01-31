@@ -2,11 +2,19 @@ $(window).load(function () { // makes sure the whole site is loaded
     $('#status').fadeOut(); // will first fade out the loading animation
     $('#preloader').delay(0).fadeOut('slow'); // will fade out the white DIV that covers the website.
     $('body').delay(0).css({'overflow': 'visible'});
+
+// Initializing WOW.JS
+
+    new WOW().init();
+    $("body").overlayScrollbars({ overflowBehavior : {
+        x : "none",
+        y : "scroll"
+    } });
 })
 
 $(document).ready(function () {
 
-    
+
     $('input').iCheck({
         checkboxClass: 'icheckbox_square-yellow',
         radioClass: 'iradio_square-yellow',
@@ -32,6 +40,7 @@ $(document).ready(function () {
 
     });
 
+
 });
 $(document).ready(function () {
     $("#bg-slider").owlCarousel({
@@ -42,12 +51,12 @@ $(document).ready(function () {
         singleItem: true,
         mouseDrag: false,
         transitionStyle: "fade"
-                // "singleItem:true" is a shortcut for:
-                // items : 1, 
-                // itemsDesktop : false,
-                // itemsDesktopSmall : false,
-                // itemsTablet: false,
-                // itemsMobile : false 
+        // "singleItem:true" is a shortcut for:
+        // items : 1,
+        // itemsDesktop : false,
+        // itemsDesktopSmall : false,
+        // itemsTablet: false,
+        // itemsMobile : false
     });
     $("#prop-smlr-slide_0").owlCarousel({
         navigation: false, // Show next and prev buttons
@@ -123,6 +132,5 @@ $(document).ready(function () {
 
 })
 
-// Initializing WOW.JS
 
-new WOW().init();
+
