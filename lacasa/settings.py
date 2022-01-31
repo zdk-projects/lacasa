@@ -8,9 +8,7 @@ import django_heroku
 import dotenv
 from django.utils.encoding import force_str
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 dotenv_file = os.path.join(BASE_DIR, ".env")
 
@@ -24,7 +22,6 @@ SECRET_KEY = os.environ['SECRET_KEY']
 ADMINS = (
     ('admin', os.environ['SITE_ADMIN']),
 )
-
 
 DEBUG = True
 
@@ -56,7 +53,7 @@ MIDDLEWARE = [
 MIDDLEWARE_CLASSES = (
     'raygun4py.middleware.django.Provider'
 )
-RAYGUN4PY_API_KEY =  os.environ['RAYGUN4PY_API_KEY']
+RAYGUN4PY_API_KEY = os.environ['RAYGUN4PY_API_KEY']
 
 ROOT_URLCONF = 'lacasa.urls'
 
@@ -82,17 +79,21 @@ WSGI_APPLICATION = 'lacasa.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {'default': {}}
-
-if 'ON_HEROKU' in os.environ:
-    DATABASES['default'].update(dj_database_url.config(conn_max_age=500, ssl_require=True))
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
+DB_NAME = os.environ['DB_NAME']
+DB_USERNAME = os.environ['DB_USERNAME']
+DB_PASSWORD = os.environ['DB_PASSWORD']
+DB_HOST = os.environ['DB_HOST']
+DB_PORT = os.environ['DB_PORT']
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': DB_NAME,
+        'USER': DB_USERNAME,
+        'PASSWORD': DB_PASSWORD,
+        'HOST': DB_HOST,
+        'PORT': DB_PORT,
     }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
