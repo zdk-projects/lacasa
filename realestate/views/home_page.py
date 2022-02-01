@@ -1,6 +1,5 @@
-from django.forms import model_to_dict
 from django.shortcuts import render
-from realestate.models import Team
+from realestate.models import Team, Achievement
 from . import about_us
 
 
@@ -45,8 +44,10 @@ def our_team(request):
 
 
 def our_achievements(request):
+    achievements = Achievement.objects.all().order_by('-id')
     content = {
         'about_us': about_us(),
+        'achievements': achievements,
         'header': {
             'title': 'Over Achievements',
         }

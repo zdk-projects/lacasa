@@ -58,7 +58,7 @@
                                 <div class="box-two proerty-item">
                                     <div class="item-thumb">
                                         {% if team.image %}
-                                            <img src="{{ team.image }}" alt="{{ team.name }}">
+                                            <img src="{{ team.image.url }}" alt="{{ team.name }}">
                                         {% else %}
                                             <img src="{% static 'assets/img/placeholder.png' %}" alt="{{ team.name }}">
                                         {% endif %}

@@ -1,5 +1,66 @@
 {% extends 'theme/layout.html' %}
+{% load static %}
+{% load ui_operations %}
 {% block title %} Achievements {% endblock %}
+{% block StyleLink %}
+    <link rel="stylesheet" href="{% static 'assets/css/timeline.css' %}">
+
+{% endblock %}
 {% block WebContent %}
     {% include 'theme/content/header.html' %}
+
+    <div class="container">
+
+        {{ content.achievements }}
+        {% with True as flag %}
+            <ul class="timeline">
+                {% for achievement in content.achievements %}
+                    {% if flag %}
+                        <li>
+                            <div class="timeline-badge"><i class="glyphicon glyphicon-check"></i></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="timeline-title">{{ achievement.title }}</h4>
+                                    <p>
+                                        <small class="text-muted"><i
+                                                class="glyphicon glyphicon-calendar"></i> {{ achievement.year }}
+                                        </small>
+                                    </p>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>
+                                        {{ achievement.achievement_description }}
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        {% invert_value False as flag %}
+                    {% else %}
+                        <li class="timeline-inverted">
+                            <div class="timeline-badge warning"><i class="glyphicon glyphicon-check"></i></div>
+                            <div class="timeline-panel">
+                                <div class="timeline-heading">
+                                    <h4 class="timeline-title">{{ achievement.title }}</h4>
+                                    <p>
+                                        <small class="text-muted"><i
+                                                class="glyphicon glyphicon-calendar"></i> {{ achievement.year }}
+                                        </small>
+                                    </p>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>
+                                        {{ achievement.achievement_description }}
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                        {% invert_value True as flag %}
+
+                    {% endif %}
+
+                {% endfor %}
+            </ul>
+        {% endwith %}
+    </div>
+
 {% endblock %}

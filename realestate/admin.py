@@ -1,5 +1,5 @@
 from django.contrib import admin
-from realestate.models import AboutUs, Listing, Realtor, Team
+from realestate.models import AboutUs, HomeListing, Agent, Team, Achievement
 
 
 class StateAdmin(admin.ModelAdmin):
@@ -30,6 +30,7 @@ class StateAdmin(admin.ModelAdmin):
 
 admin.site.register(AboutUs, StateAdmin)
 
-admin.site.register(Realtor)
-admin.site.register(Listing)
+admin.site.register(Agent)
+admin.site.register(HomeListing)
 admin.site.register(Team)
+admin.site.register(Achievement)

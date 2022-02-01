@@ -78,7 +78,7 @@ class Contact(models.Model):
         return self.name
 
 
-class Realtor(models.Model):
+class Agent(models.Model):
     name = models.CharField(max_length=200)
     slug = models.CharField(max_length=200, unique=True, null=False)
     photo = models.ImageField(upload_to='photos/%Y/%m/%d/')
@@ -92,8 +92,8 @@ class Realtor(models.Model):
         return self.name
 
 
-class Listing(models.Model):
-    realtor = models.ForeignKey(Realtor, on_delete=models.DO_NOTHING)
+class HomeListing(models.Model):
+    realtor = models.ForeignKey(Agent, on_delete=models.DO_NOTHING)
     title = models.CharField(max_length=200)
     slug = models.CharField(max_length=200, unique=True, null=False)
     address = models.CharField(max_length=200)
@@ -131,3 +131,14 @@ class Team(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Achievement(models.Model):
+    title = models.CharField(max_length=100)
+    year = models.CharField(max_length=20)
+    achievement_description = models.CharField(max_length=2000, null=False)
+    photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
+    list_date = models.DateTimeField(default=datetime.now, blank=True)
+
+    def __str__(self):
+        return self.title

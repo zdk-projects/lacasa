@@ -1,13 +1,13 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
-from realestate.models import Listing
+from realestate.models import HomeListing
 from realestate.views import about_us
 from realestate.views.property.choises import price_choices, bedroom_choices, state_choices
 
 
 def property_listings(request):
-    listings = Listing.objects.order_by('-list_date').filter(is_published=True)[:3]
+    listings = HomeListing.objects.order_by('-list_date').filter(is_published=True)[:3]
 
     context = {
         'listings': listings,
@@ -27,7 +27,7 @@ def property_listings(request):
 
 
 def property_list_searching(request):
-    queryset_list = Listing.objects.order_by('-list_date')
+    queryset_list = HomeListing.objects.order_by('-list_date')
 
     # Keywords
     if 'keywords' in request.GET:
