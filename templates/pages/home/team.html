@@ -1,2 +1,94 @@
 {% extends 'theme/layout.html' %}
+{% load static %}
 {% block title %} Team {% endblock %}
+{% block WebContent %}
+    {% include 'theme/content/header.html' %}
+    <div class="content-area blog-page padding-top-40" style="background-color: #FCFCFC; padding-bottom: 55px;">
+        <div class="container">
+            <div class="row">
+                <div class="blog-lst col-md-12 pl0">
+
+                    <section id="comments" class="comments wow fadeInRight animated animated"
+                             style="visibility: visible; animation-name: fadeInRight;">
+                        {% for mvp in content.team.mvp %}
+
+                            <div class="row comment">
+                                <div class="col-sm-3 col-md-2 text-center-xs">
+                                    <p>
+                                        {% if mvp.image %}
+                                            <img src="{{ mvp.image.url }}" class="img-responsive img-circle"
+                                                 alt="{{ mvp.name }}">
+                                        {% else %}
+                                            <img src="{% static 'assets/img/placeholder.png' %}"
+                                                 class="img-responsive img-circle"
+                                                 alt="{{ mvp.name }}">
+                                        {% endif %}
+
+                                    </p>
+                                </div>
+                                <div class="col-sm-9 col-md-10">
+                                    <h3 class="text-uppercase">{{ mvp.name }}</h3>
+
+                                    <p class="posted"><i class="fa fa-info-circle"></i> Our {{ mvp.position }}</p>
+
+                                    <p>
+                                        <b>His inspiring message </b>
+                                        <br>
+                                        {{ mvp.message }}
+
+                                    </p>
+
+                                    </p>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+
+                    </section>
+                </div>
+
+            </div>
+            <hr>
+            <br/>
+            <div class="row">
+                <div class="col-md-12 ">
+                    <div id="list-type" class="proerty-th">
+                        {% for team in content.team.team %}
+                            <div class="col-sm-6 col-md-3 p0">
+                                <div class="box-two proerty-item">
+                                    <div class="item-thumb">
+                                        {% if team.image %}
+                                            <img src="{{ team.image }}" alt="{{ team.name }}">
+                                        {% else %}
+                                            <img src="{% static 'assets/img/placeholder.png' %}" alt="{{ team.name }}">
+                                        {% endif %}
+                                    </div>
+                                    <div class="item-entry overflow">
+                                        <h5>{{ team.name }}</h5>
+                                        <div class="dot-hr"></div>
+                                        <span class="pull-left"> {{ team.position }} </span>
+                                        <br>
+                                        <span class="pull-left">{{ team.location }}</span>
+
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}
+{% block JavascriptLink %}
+    <script src="{% static 'assets/js/main.js' %}"></script>
+
+
+
+{% endblock %}

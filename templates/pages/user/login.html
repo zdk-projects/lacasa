@@ -2,15 +2,7 @@
 {% block title %} Login Account {% endblock %}
 
 {% block WebContent %}
-    <div class="page-head">
-        <div class="container">
-            <div class="row">
-                <div class="page-head-content">
-                    <h1 class="page-title">Home New account / Sign in </h1>
-                </div>
-            </div>
-        </div>
-    </div>
+    {% include 'theme/content/header.html' %}
     <div class="register-area" style="background-color: rgb(249, 249, 249);">
 
         <div class="container">
@@ -46,7 +38,7 @@
                                 <input type="password" name="password2" class="form-control" required>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-default">Register</button>
+                                <button type="submit" class="navbar-btn nav-button wow bounceInRight login">Register</button>
                             </div>
                         </form>
                     </div>
@@ -69,7 +61,7 @@
                                 <input type="password" name="password" class="form-control" required>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-default"> Log in</button>
+                                <button type="submit" class="navbar-btn nav-button wow bounceInRight"> Log in</button>
                             </div>
                         </form>
                         <br>

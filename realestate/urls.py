@@ -2,7 +2,7 @@ from django.urls import path, include
 
 from realestate.views.home_page import home_page, our_team, our_achievements, our_company, contact_us, privacy_policy, \
     terms_and_conditions
-from realestate.views.property.p_home_page import property_listings
+from realestate.views.property.p_home_page import property_listings, property_list_searching
 
 from realestate.views.user.u_home_page import login_user, user_registration, dashboard, logout_user
 
@@ -22,5 +22,6 @@ urlpatterns = [
     path('privacy-policy', privacy_policy, name='privacy_policy'),
 
     path('property-listings', property_listings, name='property_listings'),
+    path('property/search', property_list_searching, name='property_list_searching'),
 
 ]

@@ -8,7 +8,10 @@ from realestate.views import about_us
 
 def login_user(request):
     content = {
-        'about_us': about_us()
+        'about_us': about_us(),
+        'header': {
+            'title': 'Login User',
+        }
     }
     if request.method == 'POST':
         username = request.POST['username']
@@ -29,7 +32,10 @@ def login_user(request):
 
 def user_registration(request):
     content = {
-        'about_us': about_us()
+        'about_us': about_us(),
+        'header': {
+            'title': 'Login User',
+        }
     }
 
     if request.method == 'POST':
@@ -74,7 +80,10 @@ def dashboard(request):
 
     context = {
         'contacts': user_contacts,
-        'about_us': about_us()
+        'about_us': about_us(),
+        'header': {
+            'title': 'User Dashboard',
+        }
 
     }
     return render(request, 'pages/user/dashboard.html', context={'content': context})

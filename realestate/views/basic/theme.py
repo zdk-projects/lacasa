@@ -5,7 +5,6 @@ from realestate.models import AboutUs
 
 def get_about_us():
     data_model = AboutUs.objects.all()
-    print(data_model)
     about_us = {
 
     }
