@@ -102,7 +102,8 @@
                 </div>
                 <ul class="main-nav nav navbar-nav navbar-right">
                     <li class="dropdown ymm-sw " data-wow-delay="0.1s">
-                        <a href="{% url 'home_page' %}" class="dropdown-toggle active" data-toggle="dropdown"
+                        <a href="{% url 'home_page' %}"
+                           class="dropdown-toggle {% if  content.nbar == 'home' %}active{% endif %}"
                            data-hover="dropdown"
                            data-delay=" 200">Home <b class="caret"></b></a>
                         <ul class="dropdown-menu navbar-nav">
@@ -120,8 +121,10 @@
                     </li>
 
                     <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="#">Projects</a></li>
-                    <li class="wow fadeInDown" data-wow-delay="0.3s"><a class="" href="{% url 'property_listings' %}">Property
-                        Listing</a></li>
+                    <li class="wow fadeInDown "
+                        data-wow-delay="0.3s"><a class=" {% if content.nbar == 'home_listing' %}active{% endif %}"
+                                                 href="{% url 'property_listings' %}">
+                        House Listing</a></li>
                     <li class="dropdown yamm-fw" data-wow-delay="0.4s">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"
                            data-delay="200">Properties
@@ -203,7 +206,9 @@
                         </ul>
                     </li>
 
-                    <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="{% url 'contact_us' %}">Contact</a></li>
+                    <li class="wow fadeInDown"
+                        data-wow-delay="0.5s"><a class=" {% if content.nbar == 'contact_us' %}active{% endif %}"
+                                                 href="{% url 'contact_us' %}">Contact</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->

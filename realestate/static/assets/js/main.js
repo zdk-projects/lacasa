@@ -32,7 +32,9 @@ $(document).ready(function () {
         paginationSpeed: 100,
         singleItem: true,
         mouseDrag: false,
-        transitionStyle: "fade"
+        transitionStyle: "fade",
+            autoHeight:true,
+
         // "singleItem:true" is a shortcut for:
         // items : 1,
         // itemsDesktop : false,

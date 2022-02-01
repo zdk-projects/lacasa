@@ -1,12 +1,16 @@
 from django.shortcuts import render
-from realestate.models import Team, Achievement
+from realestate.models import Team, Achievement, HomeListing
 from . import about_us
 
 
 # Create your views here.
 def home_page(request):
+    listings = HomeListing.objects.order_by('-list_date').filter(is_published=True)[:10]
+
     content = {
         'about_us': about_us(),
+        'listing': listings,
+        'nbar': 'home',
     }
     return render(request, 'pages/home/index.html', context={'content': content})
 
@@ -15,6 +19,7 @@ def our_team(request):
     team_members = {
         'mvp': [],
         'team': [],
+
     }
     for members in Team.objects.all():
         if members.is_mvp:
@@ -36,6 +41,7 @@ def our_team(request):
     content = {
         'about_us': about_us(),
         'team': team_members,
+        'nbar': 'home',
         'header': {
             'title': 'Our Team',
         }
@@ -47,6 +53,7 @@ def our_achievements(request):
     achievements = Achievement.objects.all().order_by('-id')
     content = {
         'about_us': about_us(),
+        'nbar': 'home',
         'achievements': achievements,
         'header': {
             'title': 'Over Achievements',
@@ -58,6 +65,7 @@ def our_achievements(request):
 def our_company(request):
     content = {
         'about_us': about_us(),
+        'nbar': 'home',
         'header': {
             'title': 'Our Company',
         }
@@ -68,6 +76,7 @@ def our_company(request):
 def contact_us(request):
     content = {
         'about_us': about_us(),
+        'nbar': 'contact_us',
         'header': {
             'title': 'Contact Us',
         }

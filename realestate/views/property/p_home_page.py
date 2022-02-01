@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.core.paginator import Paginator
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from realestate.models import HomeListing
@@ -7,10 +8,14 @@ from realestate.views.property.choises import price_choices, bedroom_choices, st
 
 
 def property_listings(request):
-    listings = HomeListing.objects.order_by('-list_date').filter(is_published=True)[:3]
+    listings = HomeListing.objects.order_by('-list_date').filter(is_published=True)
+
+    paginator = Paginator(listings, 8)
+    page = request.GET.get('page')
+    paged_listings = paginator.get_page(page)
 
     context = {
-        'listings': listings,
+        'listings': paged_listings,
         'state_choices': state_choices,
         'bedroom_choices': bedroom_choices,
         'price_choices': price_choices
@@ -18,12 +23,31 @@ def property_listings(request):
     content = {
         'about_us': about_us(),
         'context': context,
+        'nbar': 'home_listing',
         'header': {
             'title': 'Property Listing',
         }
     }
 
     return render(request, 'pages/property/listing/listing.html', context={'content': content})
+
+
+def home_listing(request, listing_id):
+    listing = get_object_or_404(HomeListing, pk=listing_id)
+
+    context = {
+        'listing': listing
+    }
+    content = {
+        'about_us': about_us(),
+        'context': context,
+        'nbar': 'home_listing',
+        'header': {
+            'title': 'Property Listing',
+        }
+    }
+
+    return render(request, 'pages/property/listing/home_listing.html', content)
 
 
 def property_list_searching(request):
@@ -68,6 +92,7 @@ def property_list_searching(request):
     }
     content = {
         'about_us': about_us(),
+        'nbar': 'home_listing',
         'header': {
             'title': 'Property Search',
         }
