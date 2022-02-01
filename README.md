@@ -5,3 +5,8 @@ lacasa
 
 [![codecov](https://codecov.io/gh/zdk-projects/lacasa/branch/main/graph/badge.svg?token=QTPUJKS94D)](https://codecov.io/gh/zdk-projects/lacasa)
 
+
+Resources which needs backlinks
+
+
+<a href='https://www.freepik.com/vectors/corporate'>Corporate vector created by freepik - www.freepik.com </a>
