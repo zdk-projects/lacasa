@@ -2,13 +2,13 @@ from django.core.paginator import Paginator
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
-from realestate.models import HomeListing
+from realestate.models import HouseListing
 from realestate.views import about_us
 from realestate.views.property.choises import price_choices, bedroom_choices, state_choices
 
 
-def property_listings(request):
-    listings = HomeListing.objects.order_by('-list_date').filter(is_published=True)
+def house_listing(request):
+    listings = HouseListing.objects.order_by('-list_date').filter(is_published=True)
 
     paginator = Paginator(listings, 8)
     page = request.GET.get('page')
@@ -23,17 +23,17 @@ def property_listings(request):
     content = {
         'about_us': about_us(),
         'context': context,
-        'nbar': 'home_listing',
+        'nbar': 'house_listing',
         'header': {
-            'title': 'Property Listing',
+            'title': 'Houses Listing',
         }
     }
 
     return render(request, 'pages/property/listing/listing.html', context={'content': content})
 
 
-def home_listing(request, listing_id):
-    listing = get_object_or_404(HomeListing, pk=listing_id)
+def house_details(request, slug):
+    listing = get_object_or_404(HouseListing, slug=slug)
 
     context = {
         'listing': listing
@@ -41,17 +41,17 @@ def home_listing(request, listing_id):
     content = {
         'about_us': about_us(),
         'context': context,
-        'nbar': 'home_listing',
+        'nbar': 'house_listing',
         'header': {
-            'title': 'Property Listing',
+            'title': 'Houses Listing',
         }
     }
 
     return render(request, 'pages/property/listing/home_listing.html', content)
 
 
-def property_list_searching(request):
-    queryset_list = HomeListing.objects.order_by('-list_date')
+def house_listing_search(request):
+    queryset_list = HouseListing.objects.order_by('-list_date')
 
     # Keywords
     if 'keywords' in request.GET:
@@ -92,7 +92,7 @@ def property_list_searching(request):
     }
     content = {
         'about_us': about_us(),
-        'nbar': 'home_listing',
+        'nbar': 'house_listing',
         'header': {
             'title': 'Property Search',
         }

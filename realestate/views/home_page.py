@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from realestate.models import Team, Achievement, HomeListing
+from realestate.models import Team, Achievement, HouseListing
 from . import about_us
 
 
 # Create your views here.
 def home_page(request):
-    listings = HomeListing.objects.order_by('-list_date').filter(is_published=True)[:10]
+    listings = HouseListing.objects.order_by('-list_date').filter(is_published=True, is_featured=True)[:5]
 
     content = {
         'about_us': about_us(),

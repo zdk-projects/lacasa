@@ -1,13 +1,6 @@
 $(document).ready(function () {
 
 
-    $('input').iCheck({
-        checkboxClass: 'icheckbox_square-yellow',
-        radioClass: 'iradio_square-yellow',
-        increaseArea: '20%' // optional
-    });
-
-
     $('.theme-grid').on('click', function () {
         $('.theme-grid').addClass('active');
         $('.theme-list').removeClass('active');
@@ -57,11 +50,6 @@ $(document).ready(function () {
         paginationSpeed: 100,
         items: 3
     });
-
-    $('#price-range').slider();
-    $('#property-geo').slider();
-    $('#min-baths').slider();
-    $('#min-bed').slider();
 
     var RGBChange = function () {
         $('#RGB').css('background', '#A73893')

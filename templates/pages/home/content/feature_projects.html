@@ -1,104 +1,32 @@
 {% load static %}
 <!-- property area -->
 <div class="content-area home-area-1 recent-property" style="background-color: #FCFCFC; padding-bottom: 55px;">
+
     <div class="container">
 
         <div class="row">
             <div class="col-md-10 col-md-offset-1 col-sm-12 text-center page-title">
-                <h2>FEATURED PROJECTS</h2>
+                <h2>FEATURED PROPERTIES</h2>
             </div>
         </div>
 
         <div class="row">
             <div class="my-slick-list proerty-th">
-                <div class="col-sm-6 col-md-3 p0" style="">
-                    <div class="box-two proerty-item">
-                        <div class="item-thumb">
-                            <a href="#"><img src="{% static 'assets/img/demo/property-1.jpg' %}"></a>
-                        </div>
-                        <div class="item-entry overflow">
-                            <h5><a href="#">Super nice villa </a></h5>
-                            <div class="dot-hr"></div>
-                            <span class="pull-left"><b>Area :</b> 120m </span>
-                            <span class="proerty-price pull-right">$ 300,000</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 p0">
-                    <div class="box-two proerty-item">
-                        <div class="item-thumb">
-                            <a href="#"><img src="{% static 'assets/img/demo/property-2.jpg' %}"></a>
-                        </div>
-                        <div class="item-entry overflow">
-                            <h5><a href="#">Super nice villa </a></h5>
-                            <div class="dot-hr"></div>
-                            <span class="pull-left"><b>Area :</b> 120m </span>
-                            <span class="proerty-price pull-right">$ 300,000</span>
+                {% for item in content.listing %}
+                    <div class="col-sm-6 col-md-3 p0">
+                        <div class="box-two proerty-item">
+                            <div class="item-thumb">
+                                <a href="{% url 'house_details' slug=item.slug %}"><img src="{{ item.photo_main.url }}" alt="{{ item.title }}"></a>
+                            </div>
+                            <div class="item-entry overflow">
+                                <h5><a href="{% url 'house_details' slug=item.slug %}">{{ item.title }} </a></h5>
+                                <div class="dot-hr"></div>
+                                <span class="pull-left"><b>Area :</b> {{ item.sqft }} ft</span>
+                                <span class="proerty-price pull-right">PKR {{ item.price }}</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 p0">
-                    <div class="box-two proerty-item">
-                        <div class="item-thumb">
-                            <a href="#"><img src="{% static 'assets/img/demo/property-3.jpg' %}"></a>
-
-                        </div>
-                        <div class="item-entry overflow">
-                            <h5><a href="property-3.html">Super nice villa </a></h5>
-                            <div class="dot-hr"></div>
-                            <span class="pull-left"><b>Area :</b> 120m </span>
-                            <span class="proerty-price pull-right">$ 300,000</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 p0">
-                    <div class="box-two proerty-item">
-                        <div class="item-thumb">
-                            <a href="#"><img src="{% static 'assets/img/demo/property-4.jpg' %}"></a>
-
-                        </div>
-                        <div class="item-entry overflow">
-                            <h5><a href="#">Super nice villa </a></h5>
-                            <div class="dot-hr"></div>
-                            <span class="pull-left"><b>Area :</b> 120m </span>
-                            <span class="proerty-price pull-right">$ 300,000</span>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="col-sm-6 col-md-3 p0">
-                    <div class="box-two proerty-item">
-                        <div class="item-thumb">
-                            <a href="#"><img src="{% static 'assets/img/demo/property-2.jpg' %}"></a>
-                        </div>
-                        <div class="item-entry overflow">
-                            <h5><a href="#">Super nice villa </a></h5>
-                            <div class="dot-hr"></div>
-                            <span class="pull-left"><b>Area :</b> 120m </span>
-                            <span class="proerty-price pull-right">$ 300,000</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 col-md-3 p0">
-                    <div class="box-two proerty-item">
-                        <div class="item-thumb">
-                            <a href="#"><img src="{% static 'assets/img/demo/property-4.jpg' %}"></a>
-                        </div>
-                        <div class="item-entry overflow">
-                            <h5><a href="#">Super nice villa </a></h5>
-                            <div class="dot-hr"></div>
-                            <span class="pull-left"><b>Area :</b> 120m </span>
-                            <span class="proerty-price pull-right">$ 300,000</span>
-                        </div>
-                    </div>
-                </div>
-
-
+                {% endfor %}
             </div>
         </div>
     </div>
