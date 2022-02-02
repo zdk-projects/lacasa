@@ -670,8 +670,8 @@ label small {
 }
 
 .input-group-btn .btn {
-    background-color: #FFC500;
-    border-color: #FFC500;
+    background-color: #A73893;
+    border-color: #A73893;
     border-radius: 0px;
     height: 44px;
     color: #FFF;
@@ -2209,7 +2209,7 @@ proerty-th-list
 
 
 /*==================================
-recent-property-widget
+recent-houses-widget
 ==============================*/
 .recent-property-widget ul {
     padding: 0px;
@@ -2243,7 +2243,7 @@ recent-property-widget
 
 
 /*=========================================
-single property page
+single houses page
 ===========================================*/
 .single-property-content {
     background-color: #FFF;
@@ -2560,7 +2560,7 @@ single property page
     position: relative;
 }
 
-/*full width property */
+/*full width houses */
 .full-width-sld .lSGallery {
     bottom: 36px;
 }

@@ -1,6 +1,4 @@
 $(document).ready(function () {
-
-
     $('.theme-grid').on('click', function () {
         $('.theme-grid').addClass('active');
         $('.theme-list').removeClass('active');

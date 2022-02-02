@@ -6,3 +6,4 @@ whitenoise
 raygun4py
 Pillow
 django-imagekit
+django-material

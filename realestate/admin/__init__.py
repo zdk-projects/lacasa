@@ -1,5 +1,6 @@
 from django.contrib import admin
-from realestate.models import AboutUs, HouseListing, Agent, Team, Achievement
+from realestate.models import AboutUs, HouseListing, Agent, Team, Achievement, Album, AlbumImage
+from .image_gallery import AlbumModelAdmin, AlbumImageModelAdmin
 
 
 class StateAdmin(admin.ModelAdmin):
@@ -34,3 +35,8 @@ admin.site.register(Agent)
 admin.site.register(HouseListing)
 admin.site.register(Team)
 admin.site.register(Achievement)
+
+# Album, AlbumImage
+#  AlbumModelAdmin, AlbumImageModelAdmin
+admin.site.register(Album, AlbumModelAdmin)
+admin.site.register(AlbumImage, AlbumImageModelAdmin)

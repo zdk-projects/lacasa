@@ -1,0 +1,114 @@
+{% extends 'theme/layout.html' %}
+{% load static %}
+{% load ui_operations %}
+{% block title %} Image Gallery {% endblock %}
+{% block WebContent %}
+    {% include 'theme/content/header.html' %}
+    <div class="properties-area recent-property" style="background-color: #FFF;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 padding-top-40 properties-page">
+                    <div class="section clear">
+                        <div id="list-type" class="proerty-th-list">
+                            {% for album in albums %}
+                                <div class="col-sm-6 col-md-4 p0">
+                                    <div class="box-two proerty-item">
+                                        <div class="item-thumb">
+                                            <a href="{% url 'album' album.slug %}"><img src="{{ album.thumb.url }}"
+                                                                                        alt="{{ album.title }}"></a>
+                                        </div>
+
+                                        <div class="item-entry overflow">
+                                            <h5><a href="{% url 'album' album.slug %}">{{ album.title }} </a></h5>
+                                            <div class="dot-hr"></div>
+                                            <span class="pull-left panel sidebar-menu">
+                                                <ul class="tag-cloud">
+                                                <li>
+                                                    <a href="#">
+                                                        <i class="fa fa-calendar"> {{ album.created }} </i>
+                                                    </a>
+
+                                                </li>
+                                                    </ul>
+
+                                            </span>
+                                            <span class="pull-right panel sidebar-menu">
+                                                {% if album.tags %}
+                                                    <ul class="tag-cloud">
+                                                    {% with album.tags|split_comma as tags %}
+                                                        {% for tag in tags %}
+                                                            <li>
+                                                            <a href="#"><i class="fa fa-tags"></i> {{ tag }}</a>
+                                                        </li>
+                                                        {% endfor %}
+                                                    {% endwith %}
+                                                    </ul>
+                                                    </span>
+                                                {% endif %}
+                                            <p style="display: none;">{{ album.description|truncatechars:500 }}</p>
+                                            <div class="property-icon">
+                                                <span class="input-group-btn">
+                                                    <a class="btn btn-primary subscribe"
+                                                       href="{% url 'album' album.slug %}"> More Images</a>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+                    <div class="section">
+                        <div class="pull-right">
+                            <div class="pagination">
+
+                                <div class="pull-right">
+                                    {% if albums.has_other_pages %}
+                                        <ul class="pagination">
+                                            {% if albums.has_previous %}
+                                                <li class="page-item">
+                                                    <a href="?page={{ albums.previous_page_number }}">&laquo;</a>
+                                                </li>
+                                            {% else %}
+                                                <li class="page-item disabled">
+                                                    <a class="waves-effect waves-light btn btn-large ">&laquo;</a>
+                                                </li>
+                                            {% endif %}
+                                            {% for i in albums.paginator.page_range %}
+                                                {% if albums.number == i %}
+                                                    <li class="page-item active">
+                                                        <a>{{ i }}</a>
+                                                    </li>
+                                                {% else %}
+                                                    <li class="page-item">
+                                                        <a href="?page={{ i }}"
+                                                           class="waves-effect waves-light btn btn-large ">{{ i }}</a>
+                                                    </li>
+                                                {% endif %}
+                                            {% endfor %}
+                                            {% if albums.has_next %}
+                                                <li class="page-item">
+                                                    <a href="?page={{ albums.next_page_number }}"
+                                                       class="waves-effect waves-light btn btn-large ">&raquo;</a>
+                                                </li>
+                                            {% else %}
+                                                <li class="page-item disabled">
+                                                    <a>&raquo;</a>
+                                                </li>
+                                            {% endif %}
+                                        </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

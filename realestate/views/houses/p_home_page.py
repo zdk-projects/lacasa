@@ -4,7 +4,7 @@ from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from realestate.models import HouseListing
 from realestate.views import about_us
-from realestate.views.property.choises import price_choices, bedroom_choices, state_choices
+from realestate.views.houses.choises import price_choices, bedroom_choices, state_choices
 
 
 def house_listing(request):

@@ -2,7 +2,8 @@ from django.urls import path, include
 
 from realestate.views.home_page import home_page, our_team, our_achievements, our_company, contact_us, privacy_policy, \
     terms_and_conditions
-from realestate.views.property.p_home_page import house_listing, house_listing_search, house_details
+from realestate.views.houses.p_home_page import house_listing, house_listing_search, house_details
+from realestate.views.image_gallery.gallery import gallery, AlbumDetail
 
 from realestate.views.user.u_home_page import login_user, user_registration, dashboard, logout_user
 
@@ -25,6 +26,9 @@ urlpatterns = [
     path('home-listings', house_listing, name='house_listing'),
     path('find-home/<str:slug>', house_details, name='house_details'),
 
-    path('property/search', house_listing_search, name='property_list_searching'),
+    path('houses/search', house_listing_search, name='property_list_searching'),
+
+    path('gallery', gallery, name="gallery"),
+    path('gallery/<str:slug>', AlbumDetail.as_view(), name='album'),
 
 ]
