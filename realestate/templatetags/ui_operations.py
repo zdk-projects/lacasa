@@ -10,10 +10,15 @@ def invert_value(value):
 
 @register.simple_tag
 def split_comma(value):
-    print(value)
     value = value.split(',')
     return value
 
 
+@register.simple_tag
+def is_list(val):
+    return isinstance(val, list)
+
+
 register.filter('invert_value', invert_value)
 register.filter('split_comma', split_comma)
+register.filter('is_list', is_list)

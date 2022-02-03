@@ -1,0 +1,106 @@
+{% extends "theme/layout.html" %}
+{% load static %}
+{% block title %} Image Gallery {% endblock %}
+{% block StyleLink %}
+    <link rel="stylesheet" href="{% static 'assets/css/lightslider.min.css' %}">
+
+{% endblock %}
+
+{% block WebContent %}
+    {% include 'theme/content/header.html' %}
+    <div class="content-area single-property" style="background-color: #FCFCFC;">&nbsp;
+        <div class="container">
+            <div class="clearfix padding-top-40">
+                <div class="col-md-8 single-property-content prp-style-1 ">
+                    <div class="row">
+                        <div class="light-slide-item">
+                            <div class="clearfix">
+                                <div class="favorite-and-print">
+                                    <a class="add-to-fav" href="#login-modal" data-toggle="modal">
+                                        <i class="fa fa-star-o"></i>
+                                    </a>
+                                    <a class="printer-icon " href="javascript:window.print()">
+                                        <i class="fa fa-print"></i>
+                                    </a>
+                                </div>
+
+                                <div class="lSSlideOuter ">
+                                    <div class="lSSlideWrapper usingCss" style="transition-duration: 0ms;">
+                                        <ul id="image-gallery"
+                                            class="gallery list-unstyled lightSlider lsGrabbing lSSlide"
+                                            style="width: 4560px; transform: translate3d(-1390px, 0px, 0px); height: 510px; padding-bottom: 0%;">
+                                            {% for image in content.album.images %}
+                                                <li data-thumb="{{ image.image.url }}"
+                                                    class="lslide"
+                                                    style="width: 760px; margin-right: 0px;">
+                                                    <img src="{{ image.image.url }}" alt="{{ image.alt }}">
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4 p0">
+                    <aside class="sidebar sidebar-property blog-asside-right">
+                        <div class="dealer-widget">
+                            <div class="dealer-content">
+                                <div class="inner-wrapper">
+
+                                    <div class="clear">
+                                        <div class="col-xs-8 col-sm-8 ">
+                                            <h3 class="dealer-name">
+                                                <a href="">{{ content.album.title }}</a>
+                                            </h3>
+                                        </div>
+                                    </div>
+
+                                    <div class="clear">
+                                        <p>{{ content.album.description }}</p>
+                                    </div>
+                                    <div class="dealer-social-media">
+                                        <p>
+                                            <span>Share with your friends</span>
+                                        </p>
+                                        <div class="roperty-social">
+                                            {% include 'theme/social-media-share.html' %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </aside>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block JavascriptLink %}
+    <script src="{% static 'assets/js/lightslider.min.js' %}"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('#image-gallery').lightSlider({
+                gallery: true,
+                item: 1,
+                thumbItem: 9,
+                slideMargin: 0,
+                speed: 500,
+                auto: true,
+                loop: true,
+                onSliderLoad: function () {
+                    $('#image-gallery').removeClass('cS-hidden');
+                }
+            });
+        });
+    </script>
+
+{% endblock %}

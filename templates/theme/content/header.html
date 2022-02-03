@@ -1,8 +1,18 @@
+{% load ui_operations %}
 <div class="page-head">
     <div class="container">
         <div class="row">
             <div class="page-head-content">
-                <h1 class="page-title">{{ content.header.title }}</h1>
+                {% if content.header.title|is_list %}
+                    {% for title in content.header.title %}
+                        {% if forloop.last %}
+                            <h1 class="page-title">{{ title }}</h1>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <h1 class="page-title">{{ content.header.title }}</h1>
+                {% endif %}
+
             </div>
         </div>
     </div>
@@ -15,9 +25,22 @@
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a href="{% url 'home_page' %}">
-                        <i class="fas fa-home"></i> Home</a>
+                        <i class="fa fa-home"></i> Home</a>
                 </li>
-                <li class="breadcrumb-item active"> {{ content.header.title }}</li>
+                {% if content.header.title|is_list %}
+                    {% for title in content.header.title %}
+                        {% if forloop.last %}
+                            <li class="breadcrumb-item active"> {{ title }}</li>
+                        {% else %}
+                            <li class="breadcrumb-item">
+                                <a href="/{{ title.url }}">
+                                    {{ title.title }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <li class="breadcrumb-item active"> {{ content.header.title }}</li>
+                {% endif %}
             </ol>
         </nav>
     </div>

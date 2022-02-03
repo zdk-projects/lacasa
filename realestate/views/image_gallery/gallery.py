@@ -1,6 +1,7 @@
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from django.forms import model_to_dict
 from django.http import HttpRequest
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import DetailView
 
 from realestate.models import Album, AlbumImage
@@ -27,6 +28,27 @@ def gallery(request):
         'nbar': 'gallery',
     }
     return render(request, 'pages/image-gallery/gallery.html', {'albums': albums, 'content': content})
+
+
+def album_details(request, slug):
+    context = model_to_dict(get_object_or_404(Album, slug=slug))
+    context["images"] = AlbumImage.objects.filter(album=context["id"])
+    content = {
+        'about_us': about_us(),
+        'nbar': 'gallery',
+        'album': context,
+        'header': {
+            'title': [
+                {
+                    'title': 'Image Gallery',
+                    'url': 'gallery',
+                },
+                context["title"]
+            ],
+        }
+    }
+
+    return render(request, 'pages/image-gallery/album_detail.html', {'content': content})
 
 
 class AlbumDetail(DetailView):
